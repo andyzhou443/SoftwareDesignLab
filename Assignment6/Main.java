@@ -2,7 +2,6 @@ import java.util.Stack;
 import java.util.stream.IntStream;
 
 public class Main {
-
     public static void main(String[] args) {
 
         Stack<Character> stackChar = new Stack<>();

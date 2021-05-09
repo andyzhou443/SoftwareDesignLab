@@ -1,9 +1,11 @@
 import java.util.Queue;
 import java.util.Stack;
-import java.util.stream.IntStream;
+import java.util.stream.*;
 import java.util.ListIterator;
 import java.util.LinkedList;
 import java.util.Collections;
+import java.nio.file.*;
+import java.io.*;
 
 public class StackOperations {
 
@@ -14,8 +16,13 @@ public class StackOperations {
         /*use a stream to represent a Queue
         
         */
-        int QueueVar = IntStream. 
-        return null;
+        LinkedList<Character> list = new LinkedList<>();
+        stackOriginal.stream()
+                     .forEach(
+                        (x) -> {list.add(x);
+                     }
+                     );
+        return list;
     }
 
     /*
@@ -23,7 +30,14 @@ public class StackOperations {
      */
     public static Stack<Character> reverseStack(Stack<Character> stackOriginal) {
 
-        return (Stack<Character>) Stack.reverse(stackOriginal);
+        Stack <Character> reverse = new Stack<>();
+        stackOriginal.stream()
+                     .forEach(
+                         (x) -> {reverse.push(x);
+                     }
+                     );
+        Collections.reverse(reverse);
+        return reverse;
     }
 
     /*
@@ -31,8 +45,8 @@ public class StackOperations {
      */
     public static int sumBetween(Stack<Integer> stack, int startPosition, int endPosition) {
         //make sure they are within value range
-        if (stack. startPosition && stack. >= endPosition){
-            int sum = IntStream.rangeClosed(startPosition, endPosition)
+        if (startPosition >= 0 && stack.size() >= startPosition && stack.size() >= endPosition && endPosition >= 0 && startPosition <= endPosition){
+            int sum = IntStream.rangeClosed(stack.elementAt(startPosition), stack.elementAt(endPosition))
                                .sum();
             return sum;
         }
@@ -46,18 +60,31 @@ public class StackOperations {
      * The function will read the lines from the file, extract the characters, filter non-numeric characters (i.e. not 0,1,...9),
      * and place these character numbers on a stack
      */
-    public static Stack<Character> readNumericFromFile(final String filePath) throws Exception{
-        "abc0123!@$s".chars()//prints ther characters of string line to standardoutput
-                     .filter(Character::isDigit)
-                     .mapToObj(Character::toChars)
-                     .forEach(System.out::println)
-        int value = InStream. //not done
-                            if (Character::isDigit){
-                                push(Character)//push character to stack?
-                            }
-        return null;
-    }
-    public void push (E pushValue){
-        elements.add(pushValue);
+    public static Stack<Character> readNumericFromFile(final String filePath){
+        Path pathFiles = Paths.get(filePath);
+        Stream<String> streamstring = null;
+        Stack<Character> returnstack = new Stack<>();
+        try {
+            streamstring = Files.lines(pathFiles);
+        } catch (IOException exception) {
+            exception.printStackTrace(System.out);
+            return null;
+        }
+        
+        streamstring.forEach(
+                    (String s) ->
+                    {
+                       s.chars()//prints ther characters of string line to standardoutput
+                        .filter(Character::isDigit)
+                        .forEach((x) -> returnstack.push((char) x));
+                    }
+                        );
+
+        streamstring.close();
+        // int value = InStream. //not done
+        //                     if (Character::isDigit){
+        //                         push(Character)//push character to stack?
+        //                     }
+        return returnstack;
     }
 }
