@@ -1,8 +1,9 @@
 import java.util.Queue;
 import java.util.Stack;
+import java.util.stream.IntStream;
+import java.util.ListIterator;
 import java.util.LinkedList;
 import java.util.Collections;
-import java.util.ListIterator;
 
 public class StackOperations {
 
@@ -13,6 +14,7 @@ public class StackOperations {
         /*use a stream to represent a Queue
         
         */
+        int QueueVar = IntStream. 
         return null;
     }
 
@@ -28,14 +30,15 @@ public class StackOperations {
      * Returns the sum of integers between the start and end positions
      */
     public static int sumBetween(Stack<Integer> stack, int startPosition, int endPosition) {
-
-        if (){
-
+        //make sure they are within value range
+        if (stack. startPosition && stack. >= endPosition){
+            int sum = IntStream.rangeClosed(startPosition, endPosition)
+                               .sum();
+            return sum;
         }
         else{
-            
+            return -1;
         }
-        return -999;
     }
 
     /*
@@ -43,8 +46,18 @@ public class StackOperations {
      * The function will read the lines from the file, extract the characters, filter non-numeric characters (i.e. not 0,1,...9),
      * and place these character numbers on a stack
      */
-    public static Stack<Character> readNumericFromFile(final String filePath) throws IOException{
-
+    public static Stack<Character> readNumericFromFile(final String filePath) throws Exception{
+        "abc0123!@$s".chars()//prints ther characters of string line to standardoutput
+                     .filter(Character::isDigit)
+                     .mapToObj(Character::toChars)
+                     .forEach(System.out::println)
+        int value = InStream. //not done
+                            if (Character::isDigit){
+                                push(Character)//push character to stack?
+                            }
         return null;
+    }
+    public void push (E pushValue){
+        elements.add(pushValue);
     }
 }
